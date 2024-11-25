@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Vi talk</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.5/reset.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.5/reveal.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.5/theme/white.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.5/plugin/highlight/monokai.min.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+    <style>
+      /* Position computations of klipse get confused by reveal.js's scaling.
+       Hence, scaling should be disabled with this code.  Fix height of code area
+       with scrollbar (use overflow instead of overflow-y to restore CodeMirror
+       setting afterwards): */
+      .reveal section pre {
+        max-height: 90vh;
+        height: auto;
+        overflow: auto;
+        font-size: 0.65em;
+      }
+
+      /* Reset some reveal.js and oer-reveal settings: */
+      .reveal section pre .CodeMirror pre {
+        font-size: 2em;
+        box-shadow: none;
+        width: auto;
+        padding: 0.4em;
+        display: block;
+        overflow: visible;
+      }
+
+      /* Enlarge cursor: */
+      .CodeMirror-cursor {
+        border-left: 3px solid black;
+      }
+
+      .cm-s-default {
+        font-size: 1em;
+        line-height: 1.5em;
+        font-family: inconsolata, monospace;
+        letter-spacing: 0.3px;
+        word-spacing: 1px;
+        background: #272822;
+        color: #f8f8f2;
+      }
+
+      .cm-s-default .CodeMirror-lines {
+        padding: 8px 0;
+      }
+
+      .cm-s-default .CodeMirror-gutters {
+        box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.5);
+        -webkit-box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.5);
+        background-color: #272822;
+        padding-right: 10px;
+        z-index: 3;
+        border: none;
+      }
+
+      .cm-s-default div.CodeMirror-cursor {
+        border-left: 3px solid #f8f8f2;
+      }
+
+      .cm-s-default .CodeMirror-activeline-background {
+        background: #49483e;
+      }
+
+      .cm-s-default .CodeMirror-selected {
+        background: #49483e;
+      }
+
+      .cm-s-default .cm-comment {
+        color: #75715e;
+      }
+
+      .cm-s-default .cm-string {
+        color: #e6db74;
+      }
+
+      .cm-s-default .cm-number {
+        color: #66d9ef;
+      }
+
+      .cm-s-default .cm-atom {
+        color: #66d9ef;
+      }
+
+      .cm-s-default .cm-keyword {
+        color: #f92672;
+      }
+
+      .cm-s-default .cm-variable {
+        color: #a6e22e;
+      }
+
+      .cm-s-default .cm-def {
+        font-style: italic;
+        color: #fd971f;
+      }
+
+      .cm-s-default .cm-variable-2 {
+        color: #f92672;
+      }
+
+      .cm-s-default .cm-property {
+        color: #66d9ef;
+      }
+
+      .cm-s-default .cm-operator {
+        color: #f92672;
+      }
+
+      .cm-s-default .CodeMirror-linenumber {
+        color: #75715e;
+      }
+
+      #lab .code-wrapper {
+        min-height: 580px;
+        box-shadow: none !important;
+      }
+
+      * {
+        font-family: "Noto Sans", sans-serif !important;
+        font-optical-sizing: auto;
+        font-weight: 300;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+       }
+
+      h1.heavy {
+          font-weight: 600;
+      }
+
+      * .code-font {
+        font-family: "Source Code Pro", monospace !important;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+      }
+    </style>
+    <script>
+      window.klipse_settings = {
+        codemirror_options_in: {
+          autoCloseBrackets: true,
+        },
+        selector: '.language-klipse',
+        selector_eval_js: '.language-klipse-js',
+      };
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <section>
+            <h1 class="heavy">ViTal(k)</h1>
+            <p>Just keep vimming</p>
+          </section>
+          <section>
+            <h2>🚀 What are vi up to?️🚀</h2>
+            <ul>
+              <li class="fragment">Vi basics</li>
+              <li class="fragment">Vi and Vim and whatever else</li>
+              <li class="fragment">Standard commands</li>
+              <li class="fragment">Find and replace</li>
+              <li class="fragment">Is that it??</li>
+<!--              <li class="fragment">Buffer</li>-->
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>👩‍🏫 Vi basics 👩‍🏫</h2>
+            <ul>
+              <li class="fragment">So what is vi?<span class="fragment"> Command line text editor</span></li>
+              <li class="fragment">Why do we care?
+                <ul>
+                  <li class="fragment">Hosted servers don't have IDEs :/</li>
+                  <li class="fragment">Speedy speedy super fun</li>
+                  <li class="fragment">Am I... better than everyone?</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>💪 So lets do some vi 💪</h2>
+            <ul>
+              <li class="fragment code-font">vi [file-name]</li>
+              <li class="fragment"><span class="code-font">i</span> for insert!</li>
+              <li class="fragment">Typey typey</li>
+              <li class="fragment"><span class="code-font">ESC</span> AND <span class="code-font">:wq</span> OR <span class="code-font">:x</span></li>
+              <li class="fragment code-font">:help</li>
+            </ul>
+          </section>
+          <section>
+            <h2>💪 Vi modes 💪</h2>
+            <ul>
+              <li class="fragment">Command mode</li>
+              <li class="fragment">Insert mode</li>
+              <li class="fragment">Vim has more... 🤷‍♀️</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>😵‍💫 Vi and Vim and whatever else 😵‍💫</h2>
+            <ul>
+              <li class="fragment">Started with vi</li>
+              <li class="fragment">Vim = Vi IMproved</li>
+              <li class="fragment">Many other forks/iterations
+                <ul>
+                  <li class="fragment">Neovim</li>
+                  <li class="fragment">elvis</li>
+                  <li class="fragment">nvi</li>
+                  <li class="fragment">vile</li>
+                  <li class="fragment">vis</li>
+                  <li class="fragment">libvim</li>
+                </ul>
+              </li>
+              <li class="fragment">So what should I use??</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>Some useful</h1>
+            <h1>commands</h1>
+          </section>
+          <section>
+            <h3>Insert mode stuff</h3>
+            <ul>
+              <li class="fragment"><span class="code-font">i</span> - to the left of cursor</li>
+              <li class="fragment"><span class="code-font">a</span> - to the right of cursor</li>
+              <li class="fragment"><span class="code-font">I</span> - beginning of line</li>
+              <li class="fragment"><span class="code-font">A</span> - end of line</li>
+              <li class="fragment"><span class="code-font">o</span> - new line below cursor</li>
+              <li class="fragment"><span class="code-font">O</span> - new line above cursor</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Moving around</h3>
+            <ul>
+              <li class="fragment"><span class="code-font">hjkl</span> (or arrow keys)</li>
+              <li class="fragment"><span class="code-font">0 or ^</span> - start of line</li>
+              <li class="fragment"><span class="code-font">$</span> - end of line</li>
+              <li class="fragment"><span class="code-font">w</span> - move cursor to the next word</li>
+              <li class="fragment"><span class="code-font">b</span> - move cursor back to previous word</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Searching</h3>
+            <ul>
+              <li class="fragment"><span class="code-font">/</span> - search, moving forward from your position</li>
+              <li class="fragment"><span class="code-font">?</span> - search, moving backward from your position</li>
+              <li class="fragment"><span class="code-font">n</span> - look at the next result of search</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Deleting, yanking, putting</h3>
+            <ul>
+              <li class="fragment"><span class="code-font">dd</span> - delete (cut) line</li>
+              <li class="fragment"><span class="code-font">yy</span> - yank (copy) line</li>
+              <li class="fragment"><span class="code-font">p</span> - put below</li>
+              <li class="fragment"><span class="code-font">P</span> - put above</li>
+              <li class="fragment"><span class="code-font">d[where-to]</span> - delete from cursor to specified location</li>
+              <li class="fragment"><span class="code-font">[num]dd</span> - e.g. 10dd, delete 10 lines including this one</li>
+            </ul>
+          </section>
+          <section>
+            <h3>More modificationy stuff</h3>
+            <ul>
+              <li class="fragment"><span class="code-font">r[char]</span> - replace current character with what's specified</li>
+              <li class="fragment"><span class="code-font">x</span> - delete current character</li>
+              <li class="fragment"><span class="code-font">cw</span> - change word from cursor</li>
+              <li class="fragment"><span class="code-font">cc</span> - change line</li>
+              <li class="fragment"><span class="code-font">ciw</span> - change inside word</li>
+              <li class="fragment"><span class="code-font">~</span> - change case</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Misc general good stuff</h3>
+            <ul>
+              <li class="fragment code-font">:set number</li>
+              <li class="fragment code-font">:set nonumber</li>
+              <li class="fragment"><span class="code-font">u</span> - undo last command</li>
+              <li class="fragment"><span class="code-font">U</span> - undo all changes to file</li>
+              <li class="fragment"><span class="code-font">[how-many-times][command][where-to]</span> e.g. 2dw</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Find and replace!</h2>
+            <ul>
+              <li class="fragment code-font">:[where]s/replace-me/with-this/g</li>
+              <li class="fragment code-font">:%s/replace-me/with-this/g</li>
+              <li class="fragment code-font">:3,45s/replace-me/with-this/g</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Is that it??</h2>
+            <ul>
+              <li class="fragment">Absolutely not!</li>
+              <li class="fragment">Macros, the buffer, tabs, marks, file navigation</li>
+              <li class="fragment">And much more...</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Thanks!</h2>
+            <p>Clinton (& Sarah)</p>
+          </section>
+          <section>
+            <h1>Any questions?</h1>
+          </section>
+        </section>
+
+      </div>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.5/reveal.min.js"
+      integrity="sha512-qlilMzyzbFMKgbgaC4kDhZ7citDePYlfm/rwmek5uKg3xtu+dPdPW2MYob42jDfG0PV5DDHk4haWEJsQFn32xA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.5/plugin/notes/notes.min.js"
+      integrity="sha512-/9WCotvRxf5+lapk+C+tbgcxOYAhQI0f0mX1QXzKeBsNzDH9LuvVFwJELQrh2fCJwtgXBtnnyB0N4Ynd3ucIzw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.5/plugin/math/math.min.js"
+      integrity="sha512-skPZpuRwuUAnF9iEEFBXc4zJaucKcHUDgY1wDBTv0ILy82C2gn8MJsbcinzj2u8r/iZjD/78HRgw2/n//poOhQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.5/plugin/markdown/markdown.min.js"
+      integrity="sha512-4exkEeyVuaWUFKozXl6L3UCugl6ai1cKnrVFkWUstdrNB2sDxxmPEaHBzTlYm9wX78EjPzEBG0s8k37oPeUFIw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.5/plugin/highlight/highlight.min.js"
+      integrity="sha512-xkVKkN0o7xECTHSUZ9zdsBYRXiAKH7CZ3aICpW6aQJZsufVVRLhEBTDjTpC1tPzm+gNZiOeW174zXAB2fOLsTg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: 'c',
+        rollingLinks: false,
+        keyboard: true,
+        mouseWheel: false,
+        fragmentInURL: false,
+        hashOneBasedIndex: false,
+        pdfSeparateFragments: true,
+        overview: true,
+        width: 1400,
+        height: 1000,
+        minScale: 1.0,
+        maxScale: 1.0,
+        transition: 'convex',
+        transitionSpeed: 'default',
+        plugins: [
+          RevealMarkdown,
+          RevealNotes,
+          RevealMath.KaTeX,
+          RevealHighlight,
+        ],
+      });
+    </script>
+    <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
+    <script>
+      Reveal.addEventListener('slidechanged', function (event) {
+        window.dispatchEvent(new Event('resize'));
+      });
+    </script>
+  </body>
+  undefined
+</html>
